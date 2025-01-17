@@ -47,7 +47,7 @@ async function RestaurantPage({
 }: RestaurantPageProps): Promise<JSX.Element> {
   const restaurant = await api.fetch(id);
   if (!restaurant) {
-    throw new Error("Restaurant not found");
+    throw new Error("No se encontro el restaurante");
   }
   const { image, name, score, description, address } = restaurant;
 
