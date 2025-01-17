@@ -2,6 +2,39 @@ import api from "@/api";
 import Image from "next/image";
 import { Star, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params: { id },
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const restaurant = await api.fetch(id);
+
+  if (!restaurant) {
+    return {
+      title: "Restaurant not found",
+      description: "",
+    };
+  }
+
+  const { name, description } = restaurant;
+
+  return {
+    title: name,
+    description,
+    openGraph: {
+      images: [
+        {
+          url: `/restaurant/${id}/opengraph-image`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
+}
 
 interface RestaurantPageProps {
   params: {
@@ -24,9 +57,9 @@ async function RestaurantPage({
         <Image
           src={image || "/placeholder.svg"}
           alt={name}
-          layout="fill"
-          objectFit="cover"
-          className="brightness-50"
+          fill
+          priority
+          className="brightness-50 object-cover"
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <h1 className="text-5xl font-bold text-white text-center px-4 drop-shadow-lg">
@@ -61,9 +94,17 @@ async function RestaurantPage({
             <p className="text-gray-700">{address}</p>
           </div>
 
-          <Button className="w-full bg-red-600 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-red-700 transition duration-300">
-            Reservar una mesa
-          </Button>
+          <div className="flex flex-col space-y-8">
+            <Button className="w-full bg-red-600 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-red-700 transition duration-300">
+              Reservar una mesa
+            </Button>
+            <Link
+              href="/"
+              className="w-fit bg-blue-600 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-blue-700 transition duration-300 align-self-center flex self-center"
+            >
+              Regresar a Home
+            </Link>
+          </div>
         </div>
       </div>
     </div>
