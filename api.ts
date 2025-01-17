@@ -1,4 +1,4 @@
-interface IRestaurant {
+export interface IRestaurant {
   id: string;
   name: string;
   image: string;

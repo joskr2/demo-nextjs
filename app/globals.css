@@ -8,7 +8,6 @@ body {
 
 @layer utilities {
   .text-balance {
-    overflow-wrap: break-word;
     text-wrap: balance;
   }
 }
