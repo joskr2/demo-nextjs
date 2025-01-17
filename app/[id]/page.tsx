@@ -23,19 +23,17 @@ export async function generateMetadata({
 
   return {
     title: name,
-    description,
-    openGraph: {
-      images: [
-        {
-          url: `/restaurant/${id}/opengraph-image`,
-          width: 1200,
-          height: 630,
-        },
-      ],
-    },
+    description
   };
 }
 
+export async function generateStaticParams() {
+  const restaurants = await api.list();
+
+  return restaurants.map((restaurant) => ({
+    id: restaurant.id,
+  }));
+}
 interface RestaurantPageProps {
   params: {
     id: string;

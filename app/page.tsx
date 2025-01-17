@@ -10,13 +10,15 @@ export default async function Home() {
         <h1 className="text-4xl font-bold text-center">Restaurantes</h1>
 
         <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {/* 
+          el prefetch  es false para que no se cargue la página de detalle del restaurante hasta que el usuario haga clic en el enlace 
+          */}
           {restaurants.map((restaurant) => (
-            <Link key={restaurant.name} href={restaurant.id}>
+            <Link key={restaurant.name} href={restaurant.id} prefetch={false}>
               <RestaurantCard {...restaurant} />
             </Link>
           ))}
         </section>
-
       </main>
     </div>
   );
