@@ -78,7 +78,7 @@ async function RestaurantPage({
               </span>
             </div>
             <div className="flex">
-              {[...Array(Math.round(restaurant.rating))].map((_, i) => (
+              {[...Array(Math.round(restaurant.score))].map((_, i) => (
                 <Star
                   key={i}
                   className="w-6 h-6 text-yellow-400 fill-current"
