@@ -8,9 +8,10 @@ import {
   CardContent,
   CardFooter,
 } from "../ui/card";
+import DynamicFavouriteButton from "./favourite-button";
 
 const RestaurantCard = (restaurant: IRestaurant) => {
-  console.log(restaurant)
+  console.log(restaurant);
   return (
     <Card className="cursor-pointer">
       <CardHeader>
@@ -29,15 +30,13 @@ const RestaurantCard = (restaurant: IRestaurant) => {
           className="w-full h-48 object-cover rounded-lg"
         />
         <p className="text-sm text-gray-500">{restaurant.address}</p>
+        <p className="text-sm text-gray-500">Puntuación: {restaurant.score}</p>
         <p className="text-sm text-gray-500">
-          Puntuación: {restaurant.score} 
-        </p>
-        <p className="text-sm text-gray-500">
-         ({restaurant.ratings} estrellas)
+          ({restaurant.ratings} estrellas)
         </p>
       </CardContent>
       <CardFooter>
-        {/* Puedes agregar contenido adicional en el pie de la tarjeta si es necesario */}
+        <DynamicFavouriteButton id={restaurant.id} />
       </CardFooter>
     </Card>
   );

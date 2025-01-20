@@ -96,13 +96,13 @@ const api = {
   },
   fetch: async (id: string): Promise<IRestaurant | undefined> => {
     const restaurants = await api.list();
-    return restaurants.find((restaurant) => restaurant.id === id);
+    return restaurants.find((restaurant) => restaurant?.id === id);
   },
 
   search: async (search: string): Promise<IRestaurant[]> => {
     const restaurants = await api.list();
     return restaurants.filter(({ name }) =>
-      name?.toLowerCase().includes(search.toLowerCase())
+      name?.toLowerCase().includes(search?.toLowerCase())
     );
   },
 };

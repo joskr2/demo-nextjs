@@ -32,7 +32,9 @@ export default function RootLayout({
         <NuevoHeader />
         <main className="py-8">{children}</main>
         <footer className=" z-50 bg-white shadow-md">
-          {new Date().getFullYear()}
+          <p className="text-center text-sm text-gray-500">
+            {new Date().getFullYear()}
+          </p>
         </footer>
       </body>
     </html>
