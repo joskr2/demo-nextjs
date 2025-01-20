@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import SearchBox from "./search-box";
 
 const NuevoHeader = () => {
   return (
@@ -40,7 +39,6 @@ const NuevoHeader = () => {
         </Link>
 
         <section className="flex items-center justify-end gap-4">
-          <SearchBox />
           <Link href="/" className="text-center">
             Home
           </Link>
