@@ -72,7 +72,7 @@ const URL =
 const api = {
   list: async (): Promise<IRestaurant[]> => {
     // Obtenemos la información de Google Sheets en formato texto y la dividimos por líneas, nos saltamos la primera línea porque es el encabezado
-    const [, ...data] = await fetch(URL)
+    const [, ...data] = await fetch(URL, { next: { revalidate: 60 } })
       .then((res) => res.text())
       .then((text) => text.split("\n"));
 

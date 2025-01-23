@@ -17,15 +17,6 @@ const SearchBox = () => {
     const search = formData.get("search") as string;
     router.push(`/?search=${search}`);
   };
-
-  // async function searchAction(formData: FormData) {
-
-  //   "use server";
-
-  //   const search = formData.get("search") as string;
-  //   router.push(`/?search=${search}`);
-  // }
-
   return (
     <form onSubmit={handleSearch} className="flex gap-2 my-4">
       <Input

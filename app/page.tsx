@@ -6,7 +6,9 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function Home({ searchParams }: { searchParams: { search: string } }) {
-  const restaurants = await api.search(searchParams.search);
+  const restaurants = searchParams.search 
+  ? await api.search(searchParams.search)
+  : await api.list();
 
   async function searchAction(formData: FormData) {
     "use server";
